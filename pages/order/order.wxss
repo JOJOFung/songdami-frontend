@@ -1,0 +1,73 @@
+/* order.wxss */
+.page{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.section{
+  padding:0px;
+}
+
+.title{
+  margin-bottom: 5px;
+  border-bottom: 1px dotted;
+  padding-top: 8px;
+  color:#999999;
+  font-size:14px;
+}
+
+.horizontalview{
+  display:flex; 
+  align-items:center;
+}
+
+.surname{
+  width:60px;
+}
+
+.sex{
+  width:100px;
+}
+
+.sex .sex-item{
+  display:flex;
+  margin-bottom: 3px;
+}
+
+.addressPrefix{
+  color: green;
+  font-size: 15px;
+  width: 140px;
+}
+
+.address{
+  font-size: 15px;
+  width: 100%;
+}
+
+picker-view{
+  width: 100%; 
+  height: 90px;
+}
+
+picker-view-column view{
+  line-height: 30px;
+}
+
+.confirmPart{
+  display:flex; 
+  margin-top:30px;
+}
+
+.confirmPart .confirmInfo{
+  border: 1px dotted;
+  max-width: 60%;
+  word-wrap: break-word;
+}
+
+.confirmPart .confirmBtn{
+  color: green;
+  width: 120px;
+  max-height: 50px;
+  margin-left: 8px;
+}

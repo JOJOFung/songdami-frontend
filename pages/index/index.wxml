@@ -1,0 +1,28 @@
+<!--index.wxml-->
+<view class="container">
+
+  <view class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}{{welcome}}</text>
+  </view>
+
+  <view class="menu">
+
+    <view class="menu-item" bindtap="order">
+      <text>{{order}}</text>
+    </view>
+
+    <view class="menu-item" bindtap="">
+      <text>{{contactDeveloper}}</text>
+    </view>
+
+    <view class="menu-item donotdisplay" bindtap="manageNextDeliver">
+      <text>{{nextDeliver}}</text>
+    </view>
+
+    <view class="menu-item donotdisplay" bindtap="manageAddress">
+      <text>{{addressManager}}</text>
+    </view>
+
+  </view>
+</view>
