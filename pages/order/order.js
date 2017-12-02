@@ -1,19 +1,5 @@
 // order.js
-var persist = require("../../persist/persist.js");
-
-const items = [
-  "皇帝贵宾20斤／120元", 
-  "五谷龙20斤／100元",
-  "天然香20斤／100元",
-  "东台大米20斤／60元",
-  "东台大米50斤／150元",
-  "崇明新大米20斤／60元",
-  "宝骏大米20斤／70元",
-  "射阳晚粳米20斤／52元",
-  "东北大米20斤／60元",
-  "秋田小町20斤／60元",
-  "稻花香20斤／60元",
-  "新糯米10斤／35元"];
+const persist = require("../../persist/persist.js");
 
 const date = new Date();
 const years = [date.getFullYear()];
@@ -39,14 +25,7 @@ Page({
     addressTitle: "您希望配送到哪里？",
     timeTitle: "您期望何时送达？",
     contactSurname: "姓",
-    contactTelephone: "电话号码",
-    addressPrefix: "上海市徐汇区",
-    addressPlaceholder: "门牌号码",
-    timeYear: "年",
-    timeMonth: "月",
-    timeDay: "日",
-    confirm: "确认！",
-    //Initial data of view
+    surnameValue: "",//View value
     sexes: [
       {
         value: 0,
@@ -57,17 +36,38 @@ Page({
         name: "女士"
       }
     ],
-    items: items,
+    sexValue: 0,//View value
+    contactTelephone: "电话号码",
+    telephoneValue: "",//View value
+    addressPrefix: "上海市徐汇区",
+    addressValue: "",//View value
+    addressPlaceholder: "门牌号码",
+    addressValue: "",//View value
+    timeYear: "年",
+    timeMonth: "月",
+    timeDay: "日",
+    confirm: "确认！",
+    //Initial data of view
+    
+    items: [
+      "皇帝贵宾20斤／120元",
+      "五谷龙20斤／100元",
+      "天然香20斤／100元",
+      "东台大米20斤／60元",
+      "东台大米50斤／150元",
+      "崇明新大米20斤／60元",
+      "宝骏大米20斤／70元",
+      "射阳晚粳米20斤／52元",
+      "东北大米20斤／60元",
+      "秋田小町20斤／60元",
+      "稻花香20斤／60元",
+      "新糯米10斤／35元"
+    ],
+    itemIndex: 0,
     years: years,
     months: months,
     days: days,
-    value: [0, 0, 0], //滑块第几个值
-
-    //Initial data of controller
-    item: "1",
-    year: date.getFullYear(),
-    month: date.getMonth() + 1,
-    day: date.getDate()
+    deliverDateValue: [0, 0, 0], //滑块第几个值
   },
 
   bindSurnameInput: function (e) {
@@ -77,19 +77,18 @@ Page({
   },
 
   onSexChange: function (e) {
-    let itemName = "";
+    this.setData({
+      sexValue: e.detail.value
+    });
+  },
 
+  _getSexName:function(iSexValue){
     let items = this.data.sexes;
     for (let i = 0, len = items.length; i < len; ++i) {
-      if (items[i].value == e.detail.value) {
-        itemName = items[i].name;
-        break;
+      if (items[i].value == iSexValue) {
+        return items[i].name;
       };
     }
-
-    this.setData({
-      sexValue: itemName
-    });
   },
 
   bindTelephoneInput: function (e) {
@@ -105,9 +104,8 @@ Page({
   },
 
   bindItemChange: function (e) {
-    let val = e.detail.value;
     this.setData({
-      item: this.data.items[val[0]]
+      itemIndex: e.detail.value
     });
   },
 
@@ -125,10 +123,8 @@ Page({
     }
 
     this.setData({
-      year: year,
-      month: month,
-      days: this.data.days,
-      day: day
+      deliverDateValue: val,
+      days: this.data.days
     });
   },
 
@@ -183,10 +179,22 @@ Page({
     return monthDays;
   },
 
-  contact:function(){
+  contact: function () {
     //send message to backend system;
     //重复信息，好的，知道咯。
-    persist.makeRequest();
+    var order = this._getOrderDetails();
+    persist.makeRequest(order);
+  },
+
+  _getOrderDetails: function () {
+    return {
+      name: this.data.surnameValue,
+      sex: this._getSexName(this.data.sexValue),
+      telephone: this.data.telephoneValue,
+      itemName: this.data.items[this.data.itemIndex],
+      address: this.data.addressPrefix + this.data.addressValue,
+      date: this.data.years[this.data.deliverDateValue[0]] + "-" + this.data.months[this.data.deliverDateValue[1]] + "-" + this.data.days[this.data.deliverDateValue[2]]
+    }
   },
 
   /**

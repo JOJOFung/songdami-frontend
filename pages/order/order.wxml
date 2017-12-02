@@ -29,7 +29,7 @@
   <view class="section">
     <view class="title">{{choiceTitle}}</view>
 
-    <picker-view indicator-style="height: 30px;" value="{{value}}" bindchange="bindItemChange">
+    <picker-view indicator-style="height: 30px;" value="{{itemIndex}}" bindchange="bindItemChange">
       <picker-view-column>
         <view wx:for="{{items}}">{{item}}</view>
       </picker-view-column>
@@ -54,7 +54,7 @@
   <view class="section">
     <view class="title">{{timeTitle}}</view>
 
-    <picker-view indicator-style="height: 30px;" value="{{value}}" bindchange="bindTimeChange">
+    <picker-view indicator-style="height: 30px;" value="{{deliverDateValue}}" bindchange="bindTimeChange">
       <picker-view-column>
         <view wx:for="{{years}}">{{item}}{{timeYear}}</view>
       </picker-view-column>
@@ -69,7 +69,7 @@
   
   <view class="confirmPart">
     <view class="confirmInfo">
-      {{year}}年{{month}}月{{day}}日{{addressValue}}需要{{item}}一袋。
+      {{years[deliverDateValue[0]]}}年{{months[deliverDateValue[1]]}}月{{days[deliverDateValue[2]]}}日{{addressValue}}需要{{items[itemIndex]}}一袋。
     </view>
 
    <button

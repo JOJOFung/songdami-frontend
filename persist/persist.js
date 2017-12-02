@@ -1,13 +1,11 @@
 const requestUrl = require('../utils/constants.js').getOrderCreateURL()
 const duration = 2000
 
-function makeRequest() {
+function makeRequest(data) {
   wx.request({
     url: requestUrl,
     method: "POST",
-    data: {
-      noncestr: Date.now()
-    },
+    data: data,
     success: function (result) {
       wx.navigateTo({
         url: '../success/success'
