@@ -16,10 +16,6 @@ for (let i = 1; i <= 31; i++) {
 }
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     contactTitle: "请问如何联系您？",
     choiceTitle: "您需要什么大米？",
@@ -40,16 +36,6 @@ Page({
     sexValue: 0,//View value
     contactTelephone: "电话号码",
     telephoneValue: "",//View value
-    addressPrefix: "上海市徐汇区",
-    addressValue: "",//View value
-    addressPlaceholder: "门牌号码",
-    addressValue: "",//View value
-    timeYear: "年",
-    timeMonth: "月",
-    timeDay: "日",
-    confirm: "确认！",
-    //Initial data of view
-    
     items: [
       "皇帝贵宾20斤／120元",
       "五谷龙20斤／100元",
@@ -64,11 +50,19 @@ Page({
       "稻花香20斤／60元",
       "新糯米10斤／35元"
     ],
-    itemIndex: 0,
+    itemIndex: 0,//View value
+    addressPrefix: "上海市徐汇区",
+    addressValue: "",//View value
+    addressPlaceholder: "门牌号码",
+    addressValue: "",//View value
+    timeYear: "年",
+    timeMonth: "月",
+    timeDay: "日",
     years: years,
     months: months,
     days: days,
-    deliverDateValue: [0, 0, 0], //滑块第几个值
+    deliverDateValue: [0, 0, 0],//View value
+    confirm: "确认！"
   },
 
   bindSurnameInput: function (e) {

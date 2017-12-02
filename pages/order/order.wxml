@@ -5,24 +5,16 @@
     <view class="title">{{contactTitle}}</view>
 
     <view class="horizontalview">
-      <input 
-          class="surname" 
-          type="text" 
-          placeholder="{{contactSurname}}"
-          bindinput="bindSurnameInput"
-          auto-focus/>
+      <input class="surname" type="text" placeholder="{{contactSurname}}" bindinput="bindSurnameInput" auto-focus/>
       <radio-group class="sex" bindchange="onSexChange">
-          <label class="sex-item" wx:for="{{sexes}}" wx:key="{{item.value}}">
-            <view>
-              <radio value="{{item.value}}" checked="true"/>
-            </view>
-            <view>{{item.name}}</view>
-          </label>
-        </radio-group>
-      <input 
-          type="number"
-          placeholder="{{contactTelephone}}"
-          bindinput="bindTelephoneInput"/>
+        <label class="sex-item" wx:for="{{sexes}}" wx:key="{{item.value}}">
+          <view>
+            <radio value="{{item.value}}" checked="true" />
+          </view>
+          <view>{{item.name}}</view>
+        </label>
+      </radio-group>
+      <input type="number" placeholder="{{contactTelephone}}" bindinput="bindTelephoneInput" />
     </view>
   </view>
 
@@ -43,11 +35,7 @@
       <label class="addressPrefix">
         {{addressPrefix}}
       </label>
-      <input
-          class="address"
-          type="text"
-          placeholder="{{addressPlaceholder}}"
-          bindinput="bindAddressInput"/>
+      <input class="address" type="text" placeholder="{{addressPlaceholder}}" bindinput="bindAddressInput" />
     </view>
   </view>
 
@@ -66,18 +54,15 @@
       </picker-view-column>
     </picker-view>
   </view>
-  
+
   <view class="confirmPart">
     <view class="confirmInfo">
       {{years[deliverDateValue[0]]}}年{{months[deliverDateValue[1]]}}月{{days[deliverDateValue[2]]}}日{{addressValue}}需要{{items[itemIndex]}}一袋。
     </view>
 
-   <button
-      class="confirmBtn" 
-      open-type="contact"
-      bindtap="contact">  
-    {{confirm}}
+    <button class="confirmBtn" open-type="contact" bindtap="contact">
+      {{confirm}}
     </button>
   </view>
-  
+
 </view>

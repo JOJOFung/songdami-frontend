@@ -1,5 +1,5 @@
-const requestUrl = require('../utils/constants.js').getOrderCreateURL()
-const duration = 2000
+const requestUrl = require('../utils/constants.js').getOrderCreateURL();
+const duration = 2000;
 
 function makeRequest(data) {
   wx.request({
@@ -17,9 +17,9 @@ function makeRequest(data) {
         url: '../fail/fail'
       });
     }
-  })
+  });
 };
 
 module.exports = {
   makeRequest: makeRequest
-}
+};
