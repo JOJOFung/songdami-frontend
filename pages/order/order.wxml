@@ -60,7 +60,7 @@
       {{years[deliverDateValue[0]]}}年{{months[deliverDateValue[1]]}}月{{days[deliverDateValue[2]]}}日{{addressValue}}需要{{items[itemIndex]}}一袋。
     </view>
 
-    <button class="confirmBtn" open-type="contact" bindtap="contact">
+    <button class="confirmBtn" bindtap="contact">
       {{confirm}}
     </button>
   </view>
