@@ -9,17 +9,15 @@ function makeRequest() {
       noncestr: Date.now()
     },
     success: function (result) {
-      wx.showToast({
-        title: '请求成功',
-        icon: 'success',
-        mask: true,
-        duration: duration
-      })
-      console.log('request success', result)
+      wx.navigateTo({
+        url: '../success/success'
+      });
     },
 
     fail: function ({ errMsg }) {
-      console.log('request fail', errMsg)
+      wx.navigateTo({
+        url: '../fail/fail'
+      });
     }
   })
 };

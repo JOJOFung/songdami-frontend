@@ -2,7 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/order/order"
+    "pages/order/order",
+    "pages/success/success",
+    "pages/fail/fail"
   ],
   "window": {
     "backgroundTextStyle": "light",
