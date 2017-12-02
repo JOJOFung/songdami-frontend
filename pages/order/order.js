@@ -33,7 +33,8 @@ Page({
         name: "女士"
       }
     ],
-    sexValue: 0,//View value
+    //TODO: check why sexValue cannot be 0
+    sexValue: 1,//View value
     contactTelephone: "电话号码",
     telephoneValue: "",//View value
     items: [

@@ -7,7 +7,7 @@
     <view class="horizontalview">
       <input class="surname" type="text" placeholder="{{contactSurname}}" bindinput="bindSurnameInput" auto-focus/>
       <radio-group class="sex" bindchange="onSexChange">
-        <label class="sex-item" wx:for="{{sexes}}" wx:key="{{item.value}}">
+        <label class="sex-item" wx:for="{{sexes}}" wx:key="{{item.value}}" value="{{sexValue}}">
           <view>
             <radio value="{{item.value}}" checked="true" />
           </view>
