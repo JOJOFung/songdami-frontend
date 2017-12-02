@@ -1,4 +1,6 @@
 // order.js
+var persist = require("../../persist/persist.js");
+
 const items = [
   "皇帝贵宾20斤／120元", 
   "五谷龙20斤／100元",
@@ -184,6 +186,7 @@ Page({
   contact:function(){
     //send message to backend system;
     //重复信息，好的，知道咯。
+    persist.makeRequest();
   },
 
   /**
