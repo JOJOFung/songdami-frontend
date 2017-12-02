@@ -1,4 +1,4 @@
 <!--pages/success/success.wxml-->
-<view>
+<view class="container">
 <text>{{successInfo}}</text>
 </view>

@@ -1,2 +1,4 @@
 <!--pages/fail/fail.wxml-->
-<text>{{failInfo}}</text>
+<view class="container">
+  <text>{{failInfo}}</text>
+</view>
