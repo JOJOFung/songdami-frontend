@@ -2,6 +2,7 @@
 const persist = require("../../persist/persist.js");
 
 //TODO: 把时间抽到另外一个单独的文件中去
+//TODO: SAVE SURNAME, SEX, TELEPHONE, ITEM, ADDRESS TO LOCAL STORAGE
 const date = new Date();
 const years = [date.getFullYear()];
 const months = [];
@@ -35,7 +36,7 @@ Page({
     ],
     //TODO: check why sexValue cannot be 0
     sexValue: 1,//View value
-    contactTelephone: "电话号码",
+    contactTelephone: "手机号码",
     telephoneValue: "",//View value
     items: [
       "皇帝贵宾20斤／120元",
@@ -78,7 +79,7 @@ Page({
     });
   },
 
-  _getSexName:function(iSexValue){
+  _getSexName: function (iSexValue) {
     let items = this.data.sexes;
     for (let i = 0, len = items.length; i < len; ++i) {
       if (items[i].value == iSexValue) {
@@ -96,7 +97,7 @@ Page({
   bindAddressInput: function (e) {
     this.setData({
       addressValue: e.detail.value
-    })
+    });
   },
 
   bindItemChange: function (e) {
@@ -179,6 +180,10 @@ Page({
     //send message to backend system;
     //重复信息，好的，知道咯。
     var order = this._getOrderDetails();
+    if (!this._validateTelephone(order)) {
+      return;
+    }
+
     persist.makeRequest(order);
   },
 
@@ -186,11 +191,29 @@ Page({
     return {
       name: this.data.surnameValue,
       sex: this._getSexName(this.data.sexValue),
-      telephone: this.data.telephoneValue,
+      telephone: this.data.telephoneValue,//电话号码作为订单的唯一标识符
       itemName: this.data.items[this.data.itemIndex],
       address: this.data.addressPrefix + this.data.addressValue,
       date: this.data.years[this.data.deliverDateValue[0]] + "-" + this.data.months[this.data.deliverDateValue[1]] + "-" + this.data.days[this.data.deliverDateValue[2]]
     }
+  },
+
+  _validateTelephone: function (oOrder) {
+    if (!oOrder.telephone || oOrder.telephone.length !== 11) {
+      wx.showToast({
+        title: '请正确填写手机',
+        duration: 2000
+      });
+      return false;
+    } else if (!oOrder.address || oOrder.address.length <= 6) {
+      wx.showToast({
+        title: '请正确填写地址',
+        duration: 2000
+      });
+      return false;
+    }
+
+    return true;
   },
 
   /**
