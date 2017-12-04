@@ -18,6 +18,11 @@ Page({
   },
 
   cancel: function (e) {
+    var show = e.currentTarget.dataset.show;
+    if(!show){
+      return;
+    }
+
     var that = this;
     var id = e.currentTarget.dataset.id;
     wx.login({
