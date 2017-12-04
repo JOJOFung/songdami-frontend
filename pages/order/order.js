@@ -188,7 +188,9 @@ Page({
   },
 
   _getOrderDetails: function () {
+    var code = getApp().globalData.code;
     return {
+      code: code,
       name: this.data.surnameValue,
       sex: this._getSexName(this.data.sexValue),
       telephone: this.data.telephoneValue,//电话号码作为订单的唯一标识符
