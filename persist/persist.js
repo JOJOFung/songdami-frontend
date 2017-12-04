@@ -19,6 +19,7 @@ function makePOSTRequest(data) {
     }
   });
 }
+
 function makeGETRequest(data, fnCallback) {
   wx.request({
     url: requestUrl,
@@ -35,7 +36,25 @@ function makeGETRequest(data, fnCallback) {
   });
 }
 
+function makeDELETERequest(data, fnCallback) {
+  wx.request({
+    url: requestUrl,
+    data: data,
+    method: "DELETE",
+    success: function (result) {
+      typeof fnCallback == "function" && fnCallback(result.data)
+    },
+
+    fail: function ({ errMsg }) {
+      wx.navigateTo({
+        url: '../fail/fail'
+      });
+    }
+  });
+}
+
 module.exports = {
   makePOSTRequest: makePOSTRequest,
-  makeGETRequest: makeGETRequest
+  makeGETRequest: makeGETRequest,
+  makeDELETERequest: makeDELETERequest
 };

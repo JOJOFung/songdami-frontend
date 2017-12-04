@@ -2,3 +2,7 @@
 .item{
   margin-bottom: 20px;
 }
+
+.mini-btn{
+  margin-left: 10rpx;
+}

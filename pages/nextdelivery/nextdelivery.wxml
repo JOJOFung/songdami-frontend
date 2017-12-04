@@ -4,6 +4,7 @@
     <view class="horizontalview">
       <view class="item">{{item.name}}</view>
       <view class="item">[{{item.date}}]</view>
+      <button class="item mini-btn" type="default" size="mini" disabled="{{!item.show}}" bindtouchend='cancel' data-id="{{item.id}}">{{cancel}}</button>
     </view>
   </label>
 </view>

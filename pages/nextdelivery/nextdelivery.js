@@ -9,13 +9,44 @@ Page({
   data: {
     items: [
       // {
+      //   id: 1,
       //   name: "皇帝贵宾20斤／120元",
       //   date:"2017-12-08"
-      // }, {
-      //   name: "五谷龙20斤／100元",
-      //   date: "2017-12-08"
       // }
-    ]
+    ],
+    cancel: '取消'
+  },
+
+  cancel: function (e) {
+    var that = this;
+    var id = e.currentTarget.dataset.id;
+    wx.login({
+      success: function (res) {
+        var code = res.code;
+        persist.makeDELETERequest({ "id": id, "code": code }, function (aOrders) {
+          that.setData({
+            items: that._formatItems(aOrders)
+          });
+        });
+      }
+    });
+  },
+
+  _formatItems: function (aItems) {
+    for (var i = 0, length = aItems.length; i < length; i++) {
+      var sDate = aItems[i].date;
+      aItems[i].show = this._setShow(sDate);
+    }
+    return aItems;
+  },
+
+  _setShow: function (sDate) {
+    var current = new Date();
+    var oDate = new Date(sDate);
+    if (oDate.getFullYear() == current.getFullYear() && oDate.getMonth() == current.getMonth() && oDate.getDay() == current.getDay()) {
+      return false;
+    }
+    return true;
   },
 
   /**
@@ -28,7 +59,7 @@ Page({
         var code = res.code;
         persist.makeGETRequest({ "code": code }, function (aOrders) {
           that.setData({
-            items: aOrders
+            items: that._formatItems(aOrders)
           });
         });
       }
