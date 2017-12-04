@@ -10,6 +10,7 @@ Page({
     nextDeliver:'即将配送',
     addressManager:'收货地址管理',
     contactDeveloper:'联系开发者',
+    contactFGL:'联系老冯',
     userInfo: {}
   },
 
@@ -37,6 +38,12 @@ Page({
     wx.navigateTo({
      url: '../nextdelivery/nextdelivery'
     });
+  },
+
+  contactLF:function(){
+    wx.makePhoneCall({
+      phoneNumber: '13916626735' //仅为示例，并非真实的电话号码
+    })
   },
 
   manageAddress: function () {
