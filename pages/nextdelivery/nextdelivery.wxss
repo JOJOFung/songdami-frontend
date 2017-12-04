@@ -1,1 +1,4 @@
 /* pages/nextdelivery/nextdelivery.wxss */
+.item{
+  margin-bottom: 20px;
+}

@@ -16,11 +16,6 @@
   font-size:14px;
 }
 
-.horizontalview{
-  display:flex; 
-  align-items:center;
-}
-
 .surname{
   width:60px;
 }

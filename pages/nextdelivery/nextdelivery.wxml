@@ -1,2 +1,9 @@
 <!--pages/nextdelivery/nextdelivery.wxml-->
-<text>pages/nextdelivery/nextdelivery.wxml</text>
+<view class='container'>
+  <label wx:for="{{items}}" wx:key="{{item.value}}">
+    <view class="horizontalview">
+      <view class="item">{{item.name}}</view>
+      <view class="item">[{{item.date}}]</view>
+    </view>
+  </label>
+</view>
