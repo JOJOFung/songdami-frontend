@@ -1,7 +1,7 @@
 const requestUrl = require('../utils/constants.js').getOrderCreateURL();
 const duration = 2000;
 
-function makeRequest(data) {
+function makePOSTRequest(data) {
   wx.request({
     url: requestUrl,
     method: "POST",
@@ -18,8 +18,24 @@ function makeRequest(data) {
       });
     }
   });
-};
+}
+function makeGETRequest(data, fnCallback) {
+  wx.request({
+    url: requestUrl,
+    data: data,
+    success: function (result) {
+      typeof fnCallback == "function" && fnCallback(result.data)
+    },
+
+    fail: function ({ errMsg }) {
+      wx.navigateTo({
+        url: '../fail/fail'
+      });
+    }
+  });
+}
 
 module.exports = {
-  makeRequest: makeRequest
+  makePOSTRequest: makePOSTRequest,
+  makeGETRequest: makeGETRequest
 };

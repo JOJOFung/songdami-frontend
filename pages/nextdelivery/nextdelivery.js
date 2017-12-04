@@ -1,4 +1,6 @@
 // pages/nextdelivery/nextdelivery.js
+const persist = require("../../persist/persist.js");
+
 Page({
 
   /**
@@ -6,20 +8,31 @@ Page({
    */
   data: {
     items: [
-      {
-        name: "皇帝贵宾20斤／120元",
-        date:"2017-12-08"
-      }, {
-        name: "五谷龙20斤／100元",
-        date: "2017-12-08"
-      }]
+      // {
+      //   name: "皇帝贵宾20斤／120元",
+      //   date:"2017-12-08"
+      // }, {
+      //   name: "五谷龙20斤／100元",
+      //   date: "2017-12-08"
+      // }
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    wx.login({
+      success: function (res) {
+        var code = res.code;
+        persist.makeGETRequest({ "code": code }, function (aOrders) {
+          that.setData({
+            items: aOrders
+          });
+        });
+      }
+    });
   },
 
   /**

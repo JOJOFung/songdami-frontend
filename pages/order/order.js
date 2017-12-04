@@ -176,27 +176,36 @@ Page({
   },
 
   contact: function () {
-    //send message to backend system;
-    //重复信息，好的，知道咯。
-    var order = this._getOrderDetails();
+    var order = this._getOrderDetails(this._sendOrder2Server);
+  },
+  _sendOrder2Server: function (order) {
     if (!this._validateTelephone(order)) {
       return;
     }
 
-    persist.makeRequest(order);
+    persist.makePOSTRequest(order);
   },
 
-  _getOrderDetails: function () {
-    var code = getApp().globalData.code;
-    return {
-      code: code,
-      name: this.data.surnameValue,
-      sex: this._getSexName(this.data.sexValue),
-      telephone: this.data.telephoneValue,//电话号码作为订单的唯一标识符
-      itemName: this.data.items[this.data.itemIndex],
-      address: this.data.addressPrefix + this.data.addressValue,
-      date: this.data.years[this.data.deliverDateValue[0]] + "-" + this.data.months[this.data.deliverDateValue[1]] + "-" + this.data.days[this.data.deliverDateValue[2]]
-    }
+  _getOrderDetails: function (fnCallback) {
+    var data = this.data;
+    var that = this;
+    //调用登录接口
+    wx.login({
+      success: function (res) {
+        var code = res.code;
+        var order = {
+          code: code,
+          name: data.surnameValue,
+          sex: that._getSexName(data.sexValue),
+          telephone: data.telephoneValue,//电话号码作为订单的唯一标识符
+          itemName: data.items[data.itemIndex],
+          address: data.addressPrefix + data.addressValue,
+          date: data.years[data.deliverDateValue[0]] + "-" + data.months[data.deliverDateValue[1]] + "-" + data.days[data.deliverDateValue[2]]
+        };
+        typeof fnCallback == "function" && fnCallback(order);
+      }
+    });
+
   },
 
   _validateTelephone: function (oOrder) {
