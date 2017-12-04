@@ -12,11 +12,11 @@
       <text>{{order}}</text>
     </view>
 
-    <view class="menu-item" bindtap="">
+    <view class="menu-item donotdisplay" bindtap="">
       <text>{{contactDeveloper}}</text>
     </view>
 
-    <view class="menu-item donotdisplay" bindtap="manageNextDeliver">
+    <view class="menu-item" bindtap="manageNextDeliver">
       <text>{{nextDeliver}}</text>
     </view>
 

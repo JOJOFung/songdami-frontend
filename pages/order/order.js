@@ -2,7 +2,6 @@
 const persist = require("../../persist/persist.js");
 
 //TODO: 把时间抽到另外一个单独的文件中去
-//TODO: SAVE SURNAME, SEX, TELEPHONE, ITEM, ADDRESS TO LOCAL STORAGE
 const date = new Date();
 const years = [date.getFullYear()];
 const months = [];

@@ -35,7 +35,7 @@ Page({
   //Navigate to Next Deliver page
   manageNextDeliver: function () {
     wx.navigateTo({
-     url: '../nextdeliver/nextdeliver'
+     url: '../nextdelivery/nextdelivery'
     });
   },
 

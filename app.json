@@ -4,7 +4,8 @@
     "pages/logs/logs",
     "pages/order/order",
     "pages/success/success",
-    "pages/fail/fail"
+    "pages/fail/fail",
+    "pages/nextdelivery/nextdelivery"
   ],
   "window": {
     "backgroundTextStyle": "light",
