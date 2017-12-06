@@ -1,5 +1,6 @@
 // order.js
 const persist = require("../../persist/persist.js");
+var util = require('../../utils/util.js')
 
 //TODO: 把时间抽到另外一个单独的文件中去
 const date = new Date();
@@ -200,7 +201,7 @@ Page({
           telephone: data.telephoneValue,//电话号码作为订单的唯一标识符
           itemName: data.items[data.itemIndex],
           address: data.addressPrefix + data.addressValue,
-          date: data.years[data.deliverDateValue[0]] + "-" + data.months[data.deliverDateValue[1]] + "-" + data.days[data.deliverDateValue[2]]
+          date: data.years[data.deliverDateValue[0]] + "-" + data.months[data.deliverDateValue[1]] + "-" + util.formatNumber(data.days[data.deliverDateValue[2]])
         };
         typeof fnCallback == "function" && fnCallback(order);
       }
