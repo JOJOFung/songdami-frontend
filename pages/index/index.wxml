@@ -20,10 +20,6 @@
       <text>{{nextDeliver}}</text>
     </view>
 
-    <view class="menu-item" bindtap="contactLF">
-      <text>{{contactFGL}}</text>
-    </view>
-
     <view class="menu-item donotdisplay" bindtap="manageAddress">
       <text>{{addressManager}}</text>
     </view>
