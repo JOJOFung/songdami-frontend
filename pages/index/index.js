@@ -33,7 +33,7 @@ Page({
   },
 
   contactDeveloper:function(){
-    
+
   },
 
   //Navigate to Next Deliver page
@@ -44,8 +44,5 @@ Page({
   },
 
   manageAddress: function () {
-    // wx.navigateTo({
-    //   url: '../nextdeliver/nextdeliver'
-    // });
   }
 })
