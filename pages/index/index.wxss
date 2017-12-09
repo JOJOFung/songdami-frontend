@@ -20,11 +20,18 @@
 
 /*Menu*/
 .menu {
-  margin-top: 70px;
+  margin-top: 130rpx;
 }
 
 .menu .menu-item{
-  margin-top: 30px;
+  margin-bottom: 50rpx;
+  padding-left: 0;
+  border: 0;
+  font-size: 40rpx;
+}
+
+.menu .menu-button{
+  display: inline;
 }
 
 /*Hide some menu items under development*/

@@ -32,6 +32,10 @@ Page({
     });
   },
 
+  contactDeveloper:function(){
+    
+  },
+
   //Navigate to Next Deliver page
   manageNextDeliver: function () {
     wx.navigateTo({

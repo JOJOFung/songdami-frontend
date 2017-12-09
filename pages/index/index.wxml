@@ -12,13 +12,13 @@
       <text>{{order}}</text>
     </view>
 
-    <view class="menu-item donotdisplay" bindtap="">
-      <text>{{contactDeveloper}}</text>
-    </view>
-
     <view class="menu-item" bindtap="manageNextDeliver">
       <text>{{nextDeliver}}</text>
     </view>
+
+    <button class="menu-item menu-button" plain="true" open-type='contact'>
+    {{contactDeveloper}}
+    </button>
 
     <view class="menu-item donotdisplay" bindtap="manageAddress">
       <text>{{addressManager}}</text>
